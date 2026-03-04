@@ -1,0 +1,32 @@
+name: DataOps CI Pipeline
+
+# എപ്പോഴാണ് ഈ ടെസ്റ്റ് നടക്കേണ്ടത്? (main ബ്രാഞ്ചിലേക്ക് പുഷ് ചെയ്യുമ്പോൾ)
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest # ഒരു വെർച്വൽ മെഷീനിൽ ഇത് റൺ ചെയ്യും
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest pyspark
+
+    - name: Run PyTest
+      run: |
+        # പൈത്തണിന് നമ്മുടെ src ഫോൾഡർ കാണാൻ വേണ്ടിയുള്ള പാത്ത് സെറ്റിംഗ്
+        export PYTHONPATH=$PYTHONPATH:$(pwd)/Dataopes
+        pytest Dataopes/tests/

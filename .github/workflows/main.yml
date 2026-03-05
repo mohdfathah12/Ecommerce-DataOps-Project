@@ -26,5 +26,5 @@ jobs:
 
     - name: Run PyTest
       run: |
-        export PYTHONPATH=$PYTHONPATH:$(pwd)
-        pytest tests/
+        export PYTHONPATH=$PYTHONPATH:$(pwd)/Dataopes
+        pytest Dataopes/tests/

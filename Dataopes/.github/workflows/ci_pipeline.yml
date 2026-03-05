@@ -1,6 +1,5 @@
 name: DataOps CI Pipeline
 
-# എപ്പോഴാണ് ഈ ടെസ്റ്റ് നടക്കേണ്ടത്? (main ബ്രാഞ്ചിലേക്ക് പുഷ് ചെയ്യുമ്പോൾ)
 on:
   push:
     branches: [ "main" ]
@@ -9,7 +8,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest # ഒരു വെർച്വൽ മെഷീനിൽ ഇത് റൺ ചെയ്യും
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout Code
@@ -27,6 +26,5 @@ jobs:
 
     - name: Run PyTest
       run: |
-        # പൈത്തണിന് നമ്മുടെ src ഫോൾഡർ കാണാൻ വേണ്ടിയുള്ള പാത്ത് സെറ്റിംഗ്
-        export PYTHONPATH=$PYTHONPATH:$(pwd)/Dataopes
-        pytest Dataopes/tests/
+        export PYTHONPATH=$PYTHONPATH:$(pwd)
+        pytest tests/

@@ -26,5 +26,6 @@ jobs:
 
     - name: Run PyTest
       run: |
+        ls -R
         export PYTHONPATH=$PYTHONPATH:$(pwd)/Dataopes
-        pytest Dataopes/tests/
+        pytest .

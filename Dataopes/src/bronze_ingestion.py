@@ -17,7 +17,7 @@ def ingest_bronze(spark):
         StructField("status", StringType(), True)
     ])
     df = spark.createDataFrame(data, schema= schema)
-    df.write.format("delta").mode("overwrite").saveAsTable("fmcg.default.ecommerce_bronze")
+    df.write.format("delta").mode("overwrite").option("overwriteSchema", "true").saveAsTable("fmcg.default.ecommerce_bronze")
     return df
 
 

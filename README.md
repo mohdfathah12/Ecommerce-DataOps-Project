@@ -30,7 +30,7 @@ This project demonstrates an end-to-end data pipeline built using **Databricks**
 ---
 
 ###  Architecture Design Details
-
+![Medallion Architecture](https://YOUR_IMAGE_URL_HERE)
 * **Bronze Layer (Ingestion):** The `ingest_bronze` function loads raw e-commerce data. We utilize `overwriteSchema` to maintain flexibility, allowing the pipeline to evolve alongside changing data requirements.
 * **Silver Layer (Cleaning):** This layer acts as the filter:
 * **Deduplication:** Uses `dropDuplicates(["order_id"])` to maintain record uniqueness.

@@ -19,7 +19,7 @@ try:
 except ModuleNotFoundError:
     root_dir = os.path.dirname(parent_dir)
     src_path_alt = os.path.join(root_dir, "src")
-    
+
     sys.path.append(src_path_alt)
 
     from bronze_ingestion import ingest_bronze
